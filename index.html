@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a0a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>AZRA ♥ Senin İçin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- FLOATING HEARTS BACKGROUND -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- ROMANTIC PARTICLES -->
+    <div class="romantic-particles" id="romanticParticles"></div>
+    
+    <!-- LOVE GLOW OVERLAY -->
+    <div class="love-glow-overlay"></div>
+    
+    <!-- AURORA BACKGROUND -->
+    <div class="aurora-bg">
+        <div class="aurora aurora-1"></div>
+        <div class="aurora aurora-2"></div>
+        <div class="aurora aurora-3"></div>
+    </div>
+    
+    <!-- STARS -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <!-- START SCREEN -->
+    <div class="start-screen" id="startScreen">
+        <div class="start-content">
+            <div class="heart-container">
+                <div class="heart-beat">♥</div>
+                <div class="heart-pulse-ring"></div>
+                <div class="heart-pulse-ring delay-1"></div>
+                <div class="heart-pulse-ring delay-2"></div>
+            </div>
+            <div class="love-badge">
+                <span class="sparkle-icon">✨</span>
+                <span>Seni Seviyorum</span>
+                <span class="sparkle-icon">✨</span>
+            </div>
+            <h1 class="start-title">AZRA</h1>
+            <p class="start-subtitle">A Love Song Experience</p>
+            <div class="romantic-countdown" id="romanticCountdown">
+                Seninle geçen her saniye bir mucize...
+            </div>
+            
+            <div class="romantic-quote" id="romanticQuote">
+                "Seni gördüğüm ilk andan beri kalbim seninle atıyor..."
+            </div>
+            
+            <div class="headphone-hint">
+                <span>🎧</span>
+                <p>Kulaklık takman önerilir<br>Senin için hazırladım 💜</p>
+            </div>
+            
+            <button class="start-btn" id="startBtn">
+                <span class="btn-icon">🎵</span>
+                <span class="btn-text">Başlamak İçin Tıkla</span>
+                <div class="btn-glow"></div>
+            </button>
+            
+            <p class="start-credit">
+                <span class="heart-icon">💜</span>
+                Made by Enes for my queen
+                <span class="heart-icon">💜</span>
+            </p>
+            <div class="romantic-quote-mini" id="romanticQuoteMini">
+                "Kalbimde sadece sen varsın..."
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP -->
+    <div class="app-container" id="appContainer">
+        <!-- TIME GREETING -->
+        <div class="time-greeting" id="timeGreeting"></div>
+        
+        <!-- HEADER -->
+        <header class="main-header">
+            <div class="title-container">
+                <span class="title-heart left">♥</span>
+                <h1 class="title">AZRA</h1>
+                <span class="title-heart right">♥</span>
+            </div>
+            <p class="subtitle">Her şarkı sana, her anın sana...</p>
+            <p class="love-message" id="loveMessage">Sonsuza dek seninle...</p>
+            
+            <!-- LYRICS DISPLAY -->
+            <div class="lyrics-display" id="lyricsDisplay">
+                <span class="lyric-text">Müzik başlamak için hazır...</span>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-glow"></div>
+            </div>
+            <p class="status-text" id="statusText">Seni seviyorum...</p>
+        </header>
+
+        <!-- NAVIGATION -->
+        <div class="navigation">
+            <button class="nav-arrow nav-prev" id="prevBtn">‹</button>
+            
+            <div class="cards-wrapper">
+                <div class="cards-track" id="cardsTrack"></div>
+            </div>
+            
+            <button class="nav-arrow nav-next" id="nextBtn">›</button>
+        </div>
+        
+        <!-- INDICATORS -->
+        <div class="indicators" id="indicators">
+            <span class="indicator active" data-index="0"></span>
+            <span class="indicator" data-index="1"></span>
+            <span class="indicator" data-index="2"></span>
+            <span class="indicator" data-index="3"></span>
+            <span class="indicator" data-index="4"></span>
+        </div>
+
+        <!-- GIFT SECTION -->
+        <div class="gift-section" id="giftSection">
+            <div class="gift-hint">
+                <span class="sparkle">✨</span>
+                <span class="hint-text">Sana özel bir sürprizim var aşkım</span>
+                <span class="sparkle">✨</span>
+            </div>
+            <div class="love-hearts-float">
+                <span class="float-heart">💕</span>
+                <span class="float-heart">💖</span>
+                <span class="float-heart">💗</span>
+            </div>
+            <div class="gift-box" id="giftBox">
+                <div class="gift-lid">🎀</div>
+                <div class="gift-body">
+                    <span class="gift-icon">🎁</span>
+                    <span class="gift-text">Aç</span>
+                </div>
+                <div class="gift-glow"></div>
+                <div class="gift-particles"></div>
+            </div>
+        </div>
+
+        <!-- MUSIC VISUALIZER -->
+        <div class="visualizer" id="visualizer"></div>
+
+        <!-- MUSIC CONTROLS -->
+        <div class="music-controls">
+            <button class="btn-mute" id="muteBtn">🔊</button>
+            <button class="btn-play" id="playBtn">▶</button>
+            <button class="btn-replay" id="replayBtn">↻</button>
+        </div>
+        
+        <!-- LOVE COUNTER -->
+        <div class="love-counter" id="loveCounter">
+            <span class="heart-emoji">💓</span>
+            Seni <span class="count">0</span> saniyedir seviyorum
+            <span class="heart-emoji">💓</span>
+        </div>
+        
+        <!-- ROMANTIC FOOTER NOTE -->
+        <div class="romantic-footer" id="romanticFooter">
+            <span class="footer-heart">♥</span>
+            Her kalp atışımda sen varsın
+            <span class="footer-heart">♥</span>
+        </div>
+    </div>
+
+    <!-- CARD MODAL -->
+    <div class="card-modal" id="cardModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-card-container">
+            <div class="card" id="modalCard">
+                <div class="card-face card-front">
+                    <img src="" alt="" id="modalImage">
+                    <div class="card-shine"></div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="card-decor-top">💘</div>
+                    <div class="card-text" id="modalText"></div>
+                    <span class="signature" id="modalSignature"></span>
+                    <div class="floating-hearts-mini"></div>
+                    <div class="card-decor-bottom">💘</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-controls">
+            <button class="btn-flip" id="flipBtn">🔄 Çevir</button>
+            <button class="btn-close" id="closeBtn">↩ Geri</button>
+        </div>
+    </div>
+
+    <!-- GIFT MODAL -->
+    <div class="gift-modal" id="giftModal">
+        <div class="gift-modal-backdrop"></div>
+        
+        <div class="gift-scene">
+            <div class="gift-box-animated" id="giftBoxAnimated">
+                <div class="gift-box-lid">🎀</div>
+                <div class="gift-box-body">🎁</div>
+            </div>
+            
+            <div class="gift-confetti-burst" id="giftConfettiBurst"></div>
+            
+            <div class="final-card-wrapper" id="finalCardWrapper">
+                <div class="final-card" id="finalCard">
+                    <div class="final-card-front">
+                        <img src="./assets/images/photo-6.jpg" alt="Final Gift">
+                        <div class="photo-frame"></div>
+                    </div>
+                    <div class="final-card-back">
+                        <div class="final-message">
+                            <div class="message-decor">🌸 ✨ 🌸</div>
+                            <div class="love-quote">"Seni sonsuza dek seveceğim..."</div>
+                            <p class="message-text" id="typingText"></p>
+                            <span class="final-signature">- Seninle Sonsuza Kadar Enes 💜</span>
+                            <div class="message-decor bottom">🌸 ✨ 🌸</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gift-controls" id="giftControls">
+                <button class="btn-gift-flip" id="giftFlipBtn">🔄 Çevir</button>
+                <button class="btn-gift-close" id="giftCloseBtn">↩ Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE HEARTS -->
+    <div class="click-hearts" id="clickHearts"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
