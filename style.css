@@ -18,16 +18,23 @@
 html, body {
     font-family: 'Inter', sans-serif;
     background: var(--bg-dark);
+    width: 100%;
     min-height: 100vh;
+    min-height: -webkit-fill-available; /* iOS Safari fix */
     color: var(--white);
     overflow-x: hidden;
     position: relative;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Mobil optimizasyonları */
+    /* Mobil optimizasyonlarÄ± */
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: none;
+    /* iOS Notch ve Home Indicator desteÄŸi */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    /* Chrome DevTools mobil simÃ¼lasyonu */
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* ===== Z-INDEX LAYER SYSTEM ===== */
@@ -152,6 +159,10 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
+    height: 100vh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -159,6 +170,9 @@ html, body {
     overflow: hidden;
     transition: opacity 0.8s ease, visibility 0.8s ease;
     background: radial-gradient(ellipse at center, #1a0a2e 0%, #0a0a0a 100%);
+    /* iOS Notch ve Home Indicator desteÄŸi */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .start-screen.hidden {
@@ -313,9 +327,10 @@ html, body {
     opacity: 0;
     transition: opacity 0.8s ease;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
-    padding-bottom: 100px;
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
 }
 
 .app-container.visible { opacity: 1; }
@@ -479,6 +494,8 @@ html, body {
     overflow: hidden;
     width: 280px;
     flex-shrink: 0;
+    /* Chrome DevTools mobil simÃ¼lasyonu iÃ§in */
+    touch-action: pan-y;
 }
 
 .cards-track {
@@ -486,6 +503,8 @@ html, body {
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     will-change: transform;
     contain: layout;
+    /* Chrome DevTools mobil simÃ¼lasyonu iÃ§in */
+    touch-action: pan-y pinch-zoom;
 }
 
 /* ===== CARDS (FIXED TRANSFORM) ===== */
@@ -763,13 +782,17 @@ html, body {
     50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.3); }
 }
 
-/* ===== GIFT MODAL - TAMAMEN DÜZELTİLMİŞ ===== */
+/* ===== GIFT MODAL - TAMAMEN DÃœZELTÄ°LMÄ°Å ===== */
 .gift-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    height: 100vh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: none;
     justify-content: center;
     align-items: center;
@@ -791,7 +814,7 @@ html, body {
     z-index: 0;
 }
 
-/* GIFT SCENE - Tüm animasyonlar burada */
+/* GIFT SCENE - TÃ¼m animasyonlar burada */
 .gift-scene {
     position: relative;
     width: 100%;
@@ -882,7 +905,7 @@ html, body {
     100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) rotate(720deg) scale(0); opacity: 0; }
 }
 
-/* ===== FINAL CARD - KESİN ÇALIŞAN FLIP ===== */
+/* ===== FINAL CARD - KESÄ°N Ã‡ALIÅAN FLIP ===== */
 .final-card-wrapper {
     position: absolute;
     top: 50%;
@@ -919,7 +942,7 @@ html, body {
     transform: rotateY(180deg);
 }
 
-/* YÜZLER */
+/* YÃœZLER */
 .final-card-front,
 .final-card-back {
     position: absolute;
@@ -929,13 +952,13 @@ html, body {
     left: 0;
     border-radius: 20px;
     overflow: hidden;
-    /* KRİTİK: Her iki yüz de backface hidden */
+    /* KRÄ°TÄ°K: Her iki yÃ¼z de backface hidden */
     backface-visibility: hidden !important;
     -webkit-backface-visibility: hidden !important;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* ÖN YÜZ */
+/* Ã–N YÃœZ */
 .final-card-front {
     background: #000;
     transform: rotateY(0deg);
@@ -949,7 +972,7 @@ html, body {
     display: block;
 }
 
-/* ARKA YÜZ - BAŞTAN 180 DERECE DÖNDÜRÜLMÜŞ */
+/* ARKA YÃœZ - BAÅTAN 180 DERECE DÃ–NDÃœRÃœLMÃœÅ */
 .final-card-back {
     background: linear-gradient(145deg, #1a0a2e 0%, #1a1a2e 50%, #16213e 100%);
     border: 3px solid rgba(236, 72, 153, 0.4);
@@ -1041,13 +1064,17 @@ html, body {
     transform: scale(1.05);
 }
 
-/* ===== CARD MODAL - TAMAMEN YENİ DÜZENLENMİŞ ===== */
+/* ===== CARD MODAL - TAMAMEN YENÄ° DÃœZENLENMÄ°Å ===== */
 .card-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    height: 100vh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: none;
     justify-content: center;
     align-items: center;
@@ -1077,46 +1104,45 @@ html, body {
     height: 60vh;
     max-height: 600px;
     z-index: 1;
-    perspective: 1200px;
+    perspective: 1000px; /* 3D derinlik */
+    -webkit-perspective: 1000px;
     will-change: transform;
-    contain: layout;
 }
 
-/* ANA KART - Flip yapılan element */
+/* ANA KART - Flip yapÄ±lan element (card-inner) */
 .modal-card-container .card {
     width: 100%;
     height: 100%;
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
+    transform-style: preserve-3d; /* 3D dÃ¶nÃ¼ÅŸÃ¼mÃ¼ korur - Ã‡OK Ã–NEMLÄ° */
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-/* FLIP CLASS - 180 derece döndür */
+/* FLIP CLASS - 180 derece dÃ¶ndÃ¼r */
 .modal-card-container .card.flipped {
     transform: rotateY(180deg);
 }
 
-/* KART YÜZLERİ - Ön ve Arka */
+/* KART YÃœZLERÄ° - Ã–n ve Arka */
 .card-face {
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
     border-radius: 24px;
-    overflow: hidden;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-    /* Kritik: Arka yüzü gizle */
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
+    /* KRÄ°TÄ°K: ArkayÄ± gizle */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
-/* ÖN YÜZ */
+/* Ã–N YÃœZ (Resim) */
 .card-front {
     background: #000;
+    z-index: 2; /* BaÅŸlangÄ±Ã§ta Ã¼stte */
     transform: rotateY(0deg);
-    z-index: 2;
 }
 
 .card-front img {
@@ -1142,29 +1168,31 @@ html, body {
     100% { left: 200%; }
 }
 
-/* ARKA YÜZ - Kritik: Baştan 180 derece döndürülmüş */
+/* ARKA YÃœZ (YazÄ±) - BAÅLANGIÃ‡TA HAZIR AYAR */
 .card-back {
     background: linear-gradient(145deg, #1a0a2e 0%, #1a1a2e 50%, #16213e 100%);
     border: 3px solid rgba(236, 72, 153, 0.4);
-    transform: rotateY(180deg) !important;
+    z-index: 1; /* BaÅŸlangÄ±Ã§ta altta */
+    transform: rotateY(180deg); /* BaÅŸtan ters Ã§evrilmiÅŸ! */
     padding: 25px 20px;
+    /* Flex layout - iÃ§eriÄŸi ortala */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    /* Scroll */
     overflow-y: auto;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* Scrollbar gizle */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-/* Scrollbar gizle ama scroll çalışsın */
 .card-back::-webkit-scrollbar {
     width: 0px;
     background: transparent;
-}
-
-.card-back {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    display: none;
 }
 
 /* YAZI ALANI */
@@ -1175,13 +1203,24 @@ html, body {
     color: #f3e8ff;
     text-align: center;
     width: 100%;
-    flex: 1;
-    overflow-y: auto;
     padding: 10px 5px;
     word-wrap: break-word;
+    flex-shrink: 0;
 }
 
-/* İmza */
+/* SÃ¼slemeler ve imza iÃ§in hizalama */
+.card-decor-top,
+.card-decor-bottom {
+    text-align: center;
+    width: 100%;
+}
+
+.signature {
+    text-align: center;
+    width: 100%;
+}
+
+/* Ä°mza */
 .signature {
     font-family: 'Caveat', cursive;
     font-size: 1.15rem;
@@ -1238,7 +1277,7 @@ html, body {
 /* ===== MUSIC CONTROLS ===== */
 .music-controls {
     position: fixed;
-    bottom: 80px;
+    bottom: calc(80px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1269,7 +1308,7 @@ html, body {
 /* ===== LOVE COUNTER ===== */
 .love-counter {
     position: fixed;
-    bottom: 25px;
+    bottom: calc(25px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.6);
@@ -1291,7 +1330,7 @@ html, body {
 /* ===== VISUALIZER ===== */
 .visualizer {
     position: fixed;
-    bottom: 145px;
+    bottom: calc(145px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1331,7 +1370,7 @@ html, body {
 
 /* ===== MOBILE OPTIMIZATIONS ===== */
 @media (hover: none) and (pointer: coarse) {
-    /* Touch cihazlarda hover efektlerini kaldır */
+    /* Touch cihazlarda hover efektlerini kaldÄ±r */
     .card-wrapper:hover .card-small { transform: none; }
     .nav-arrow:hover { transform: scale(1); }
     .btn-flip:hover, .btn-close:hover { transform: scale(1); }
@@ -1348,7 +1387,7 @@ html, body {
     }
 }
 
-/* ===== MOBILE RESPONSIVE - TAMAMEN YENİ ===== */
+/* ===== MOBILE RESPONSIVE - TAMAMEN YENÄ° ===== */
 @media (max-width: 768px) {
     /* Genel */
     .start-title { font-size: 3rem; }
@@ -1375,12 +1414,59 @@ html, body {
     .gift-icon { font-size: 3rem; }
     .gift-text { font-size: 1rem; }
     
-    /* Card Modal */
-    .modal-card-container { width: 92vw; height: 65vh; max-height: 500px; }
-    .card-text { font-size: 1.2rem; line-height: 1.6; padding: 0 5px; }
-    .signature { font-size: 1rem; }
-    .modal-controls { gap: 12px; margin-top: 20px; }
-    .btn-flip, .btn-close { padding: 12px 28px; font-size: 0.95rem; }
+    /* Card Modal - Tablet */
+    .card-modal.active {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    
+    .modal-card-container { 
+        width: 60vw;
+        max-width: 400px;
+        height: 65vh;
+        max-height: 500px;
+        margin-top: 8vh;
+        margin-bottom: 18vh;
+    }
+    
+    .card-text { font-size: 1.25rem; line-height: 1.7; padding: 10px; }
+    .card-back { 
+        padding: 30px 25px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: auto !important; 
+        overflow-x: hidden !important; 
+        -webkit-overflow-scrolling: touch;
+    }
+    .signature { font-size: 1.1rem; margin-top: 20px; }
+    
+    /* Butonlar - altta sabit */
+    .modal-controls { 
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, transparent 100%);
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        z-index: 100;
+        backdrop-filter: blur(8px);
+    }
+    
+    .btn-flip, .btn-close { 
+        min-width: 140px;
+        padding: 14px 32px; 
+        font-size: 1rem;
+        min-height: 50px;
+        border-radius: 14px;
+    }
     
     /* Gift Modal */
     .gift-scene { height: 85vh; max-height: none; }
@@ -1390,19 +1476,22 @@ html, body {
     .gift-controls { gap: 10px; }
     .btn-gift-flip, .btn-gift-close { padding: 10px 22px; font-size: 0.9rem; }
     
-    /* Music Controls */
-    .music-controls { bottom: 70px; gap: 12px; }
+    /* Music Controls - iOS Safe Area */
+    .music-controls { bottom: calc(70px + env(safe-area-inset-bottom)); gap: 12px; }
     .btn-play, .btn-mute, .btn-replay { width: 50px; height: 50px; font-size: 1.2rem; }
     
-    /* Visualizer & Counter */
-    .visualizer { bottom: 130px; height: 40px; }
+    /* Visualizer & Counter - iOS Safe Area */
+    .visualizer { bottom: calc(130px + env(safe-area-inset-bottom)); height: 40px; }
     .visualizer-bar { width: 4px; }
-    .love-counter { font-size: 1rem; padding: 8px 18px; bottom: 20px; }
+    .love-counter { font-size: 1rem; padding: 8px 18px; bottom: calc(20px + env(safe-area-inset-bottom)); }
     .love-counter .count { font-size: 1.2rem; }
+    
+    /* Romantic Footer - iOS Safe Area */
+    .romantic-footer { bottom: calc(55px + env(safe-area-inset-bottom)); }
 }
 
 @media (max-width: 480px) {
-    /* Başlangıç Ekranı */
+    /* BaÅŸlangÄ±Ã§ EkranÄ± */
     .start-title { font-size: 2.5rem; }
     .heart-beat { font-size: 3rem; }
     .headphone-hint { padding: 15px 20px; flex-direction: column; text-align: center; }
@@ -1430,16 +1519,108 @@ html, body {
     .indicators { gap: 12px; }
     .indicator { width: 12px; height: 12px; }
     
-    /* Card Modal */
-    .modal-card-container { width: 95vw; height: 60vh; }
-    .card-back { padding: 20px 15px; }
-    .card-text { font-size: 16px; line-height: 1.55; } /* iOS zoom fix */
-    .modal-controls { margin-top: 15px; }
+    /* Card Modal - Paint Cizimine Gore Mobil */
+    .card-modal.active {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0;
+    }
+    
+    .modal-card-container { 
+        width: 75vw;
+        max-width: 320px;
+        height: 70vh;
+        max-height: none;
+        margin-top: 5vh;
+        margin-bottom: 15vh; /* Buton alani icin bosluk */
+    }
+    
+    .card {
+        height: 100%;
+    }
+    
+    .card-back { 
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .card-text { 
+        font-size: clamp(16px, 4.5vw, 18px);
+        line-height: 1.7;
+        text-align: center;
+        padding: 15px 10px;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .card-decor-top {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .card-decor-bottom {
+        font-size: 1.5rem;
+        margin-top: 15px;
+    }
+    
+    .signature {
+        font-size: 1.1rem;
+        margin-top: 20px;
+        padding-top: 15px;
+        text-align: center;
+        width: 100%;
+        border-top: 1px solid rgba(236, 72, 153, 0.3);
+    }
+    
+    /* BUTONLAR - EKRANIN EN ALTINDA SABIT */
+    .modal-controls { 
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+        background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 70%, transparent 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
     .btn-flip, .btn-close { 
-        padding: 14px 28px; 
-        font-size: 16px; /* iOS zoom fix */
-        min-height: 44px;
-        min-width: 100px;
+        flex: 0 1 auto;
+        min-width: 130px;
+        max-width: 160px;
+        padding: 16px 30px;
+        font-size: 16px;
+        min-height: 52px;
+        border-radius: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .btn-flip {
+        background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+        color: white;
+        border: none;
+    }
+    
+    .btn-close {
+        background: rgba(40, 40, 40, 0.95);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.25);
     }
     
     /* Gift Modal */
@@ -1462,10 +1643,10 @@ html, body {
     .status-text { font-size: 16px; } /* iOS zoom fix */
     
     /* Love Counter */
-    .love-counter { font-size: 16px; padding: 10px 16px; width: 90%; text-align: center; } /* iOS zoom fix */
+    .love-counter { font-size: 16px; padding: 10px 16px; width: 90%; text-align: center; bottom: calc(20px + env(safe-area-inset-bottom)); } /* iOS zoom fix */
 }
 
-/* Çok küçük ekranlar (iPhone SE vs) */
+/* Ã‡ok kÃ¼Ã§Ã¼k ekranlar (iPhone SE vs) */
 @media (max-width: 375px) {
     .start-title { font-size: 2.2rem; }
     .title { font-size: 1.6rem; }
@@ -1473,17 +1654,56 @@ html, body {
     .cards-wrapper { width: 200px; }
     .card-wrapper { min-width: 200px; height: 300px; }
     
-    .modal-card-container { height: 55vh; }
-    .card-text { font-size: 16px; } /* iOS zoom fix - 16px minimum */
+    /* Card Modal - 375px */
+    .modal-card-container { 
+        width: 78vw;
+        height: 68vh;
+        margin-top: 4vh;
+        margin-bottom: 16vh;
+    }
+    
+    .card-text { 
+        font-size: 16px; 
+        line-height: 1.65;
+        padding: 10px 8px;
+    } /* iOS zoom fix - 16px minimum */
+    
+    .card-back { 
+        padding: 25px 15px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Butonlar - en altta */
+    .modal-controls {
+        padding: 15px;
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+        gap: 15px;
+    }
+    
+    .btn-flip, .btn-close {
+        min-width: 110px;
+        padding: 14px 20px;
+        font-size: 16px;
+        min-height: 48px;
+        border-radius: 14px;
+    }
     
     .final-card-wrapper { height: 55%; }
     .final-message { font-size: 16px; } /* iOS zoom fix */
     
     /* Dokunmatik hedefler */
     .nav-arrow { width: 44px; height: 44px; }
-    .btn-flip, .btn-close, .btn-gift-flip, .btn-gift-close {
-        padding: 12px 20px;
+    .btn-gift-flip, .btn-gift-close {
+        padding: 14px 24px;
         font-size: 16px;
+        min-height: 44px;
+        min-width: 100px;
     }
 }
 
@@ -1676,7 +1896,7 @@ html, body {
 /* Romantic Footer */
 .romantic-footer {
     position: fixed;
-    bottom: 60px;
+    bottom: calc(60px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Caveat', cursive;
@@ -1767,16 +1987,16 @@ html, body {
 }
 
 @media (max-width: 480px) {
-    .love-glow-overlay { opacity: 0.3; animation: none; } /* Performans için animasyonu kaldır */
-    .romantic-particles { display: none; } /* Küçük ekranlarda partikülleri gizle */
-    .heart-pulse-ring { display: none; } /* Küçük ekranlarda gizle */
+    .love-glow-overlay { opacity: 0.3; animation: none; } /* Performans iÃ§in animasyonu kaldÄ±r */
+    .romantic-particles { display: none; } /* KÃ¼Ã§Ã¼k ekranlarda partikÃ¼lleri gizle */
+    .heart-pulse-ring { display: none; } /* KÃ¼Ã§Ã¼k ekranlarda gizle */
     .love-badge { font-size: 0.8rem; padding: 5px 10px; margin-bottom: 10px; }
     .romantic-countdown { font-size: 1rem; margin: 10px 0; }
     .love-message { font-size: 1rem; }
     .romantic-footer { 
         font-size: 0.85rem; 
         gap: 5px; 
-        bottom: 50px;
+        bottom: calc(50px + env(safe-area-inset-bottom));
         flex-wrap: wrap;
         justify-content: center;
     }
@@ -1794,9 +2014,46 @@ html, body {
     .love-badge { font-size: 0.75rem; padding: 4px 8px; }
     .romantic-countdown { font-size: 0.9rem; }
     .love-message { font-size: 0.95rem; }
-    .romantic-footer { font-size: 0.8rem; bottom: 45px; }
+    .romantic-footer { font-size: 0.8rem; bottom: calc(45px + env(safe-area-inset-bottom)); }
     .heart-container { transform: scale(0.7); }
     .romantic-quote-mini { font-size: 0.9rem; }
     .gift-hint .hint-text { font-size: 0.85rem; }
     .love-counter .heart-emoji { font-size: 0.9rem; }
+}
+
+/* SAFARI/IOS ICIN EKSTRA FIX */
+@supports (-webkit-touch-callout: none) {
+    .modal-card-container .card {
+        transform-style: preserve-3d;
+    }
+    .card-front, .card-back {
+        backface-visibility: hidden;
+    }
+}
+
+/* GIFT SECTION SCROLL FIX - Mobil */
+@media (max-width: 768px) {
+    .app-container {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    
+    /* Gift section gorunurken extra padding */
+    .gift-section.visible {
+        margin-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    /* Gift box tiklanabilir alan */
+    .gift-box {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-container {
+        padding-bottom: calc(100px + env(safe-area-inset-bottom));
+    }
 }
