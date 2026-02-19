@@ -166,6 +166,17 @@ elements.bgMusic.volume = 0.7;
 // ===== INIT =====
 function init() {
     debugLog('Init başlıyor', {});
+    
+    // Chrome DevTools mobil simülasyonu tespiti
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isMobileWidth = window.innerWidth <= 768;
+    debugLog('Cihaz bilgisi', { 
+        touch: isTouchDevice, 
+        mobileWidth: isMobileWidth, 
+        width: window.innerWidth,
+        userAgent: navigator.userAgent.substring(0, 50)
+    });
+    
     loadSounds();
     createFloatingHearts();
     createStars();
@@ -463,7 +474,19 @@ function changeCard(direction) {
 }
 
 function updateCarousel() {
-    const cardWidth = window.innerWidth <= 480 ? 240 : 280;
+    // Chrome DevTools mobil simülasyonu için responsive genişlik
+    const width = window.innerWidth;
+    let cardWidth;
+    if (width <= 375) {
+        cardWidth = 200;
+    } else if (width <= 480) {
+        cardWidth = 220;
+    } else if (width <= 768) {
+        cardWidth = 260;
+    } else {
+        cardWidth = 280;
+    }
+    
     if (elements.cardsTrack) {
         elements.cardsTrack.style.transform = `translateX(-${state.currentCardIndex * cardWidth}px)`;
     }
@@ -574,6 +597,10 @@ function checkAllCardsUnlocked() {
                 elements.statusText.textContent = '🎁 Sana özel bir sürprizim var aşkım!';
                 elements.statusText.style.color = '#eab308';
             }
+            // 🎁 Gift section görünür olduğunda aşağı scroll
+            setTimeout(() => {
+                elements.giftSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 500);
         }, 1500);
     }
 }
@@ -1238,6 +1265,9 @@ window.addEventListener('resize', () => {
             mobile: isMobile, 
             smallMobile: isSmallMobile 
         });
+        
+        // Carousel'i yeniden hesapla
+        updateCarousel();
         
         // Partikülleri güncelle
         const particleContainer = document.getElementById('romanticParticles');
